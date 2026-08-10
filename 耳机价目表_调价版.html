@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>耳机产品价目表</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    background: #f5f5f7;
+    color: #1d1d1f;
+    padding: 40px 20px;
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #86868b;
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+  .section {
+    background: #fff;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    background: linear-gradient(135deg, #1d1d1f, #424245);
+    color: #fff;
+  }
+  .section-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .shipping {
+    font-size: 13px;
+    background: rgba(255,255,255,0.15);
+    padding: 4px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  thead th {
+    background: #fafafa;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 13px;
+    color: #86868b;
+    font-weight: 600;
+    border-bottom: 1px solid #e8e8ed;
+    white-space: nowrap;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0f0f3;
+    transition: background 0.15s;
+  }
+  tbody tr:hover { background: #fafafa; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td {
+    padding: 14px 16px;
+    font-size: 14px;
+    vertical-align: top;
+  }
+  .model {
+    font-weight: 600;
+    color: #1d1d1f;
+  }
+  .chip {
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  .chip-yuehu { background: #fce4ec; color: #c62828; }
+  .chip-huilian { background: #f3e5f5; color: #6a1b9a; }
+  .chip-shenglong { background: #fff3e0; color: #e65100; }
+  .chip-jinqiang { background: #fff8e1; color: #f57f17; }
+  .chip-guangmang { background: #e0f7fa; color: #00838f; }
+  .price {
+    font-weight: 700;
+    font-size: 16px;
+    color: #c62828;
+    white-space: nowrap;
+  }
+  .features {
+    color: #555;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .features span {
+    display: inline-block;
+    margin-right: 4px;
+  }
+  .tag {
+    display: inline-block;
+    background: #f0f0f3;
+    color: #6e6e73;
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin: 2px 3px 2px 0;
+  }
+  .tag-anc { background: #e8f5e9; color: #2e7d32; }
+  .tag-spacial { background: #e3f2fd; color: #1565c0; }
+  .tag-otc { background: #fce4ec; color: #c62828; }
+  .tag-typec { background: #e0f7fa; color: #00838f; }
+  .footer {
+    text-align: center;
+    color: #86868b;
+    font-size: 13px;
+    margin-top: 20px;
+    padding: 20px;
+  }
+
+  /* ============ 移动端适配 ============ */
+  @media screen and (max-width: 768px) {
+    body {
+      padding: 16px 12px;
+    }
+    h1 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+    .subtitle {
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+    .section {
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .section-header {
+      padding: 14px 16px;
+    }
+    .section-header h2 {
+      font-size: 16px;
+    }
+    .shipping {
+      font-size: 11px;
+      padding: 3px 10px;
+    }
+
+    /* 表格转卡片布局 */
+    table, thead, tbody, tr, td {
+      display: block;
+      width: 100% !important;
+    }
+    thead {
+      display: none;
+    }
+    tbody tr {
+      border: none;
+      border-bottom: 1px solid #f0f0f3;
+      padding: 12px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+    tbody tr:hover { background: #fafafa; }
+    tbody td {
+      padding: 0;
+      font-size: 14px;
+      width: 100% !important;
+    }
+
+    /* 型号行 - 卡片头部 */
+    .model {
+      font-size: 15px;
+      width: 65% !important;
+      padding-right: 8px;
+    }
+    .model .chip {
+      margin-top: 3px;
+      font-size: 11px;
+    }
+
+    /* 价格 - 右对齐到型号旁边 */
+    td.price {
+      width: 35% !important;
+      text-align: right;
+      font-size: 18px;
+      align-self: flex-start;
+    }
+
+    /* 芯片方案 */
+    td:nth-child(3) {
+      width: 100% !important;
+      margin-top: 6px;
+      font-size: 12px;
+      color: #86868b;
+    }
+    td:nth-child(3)::before {
+      content: "芯片方案：";
+      font-weight: 500;
+    }
+
+    /* 主要配置 */
+    .features {
+      width: 100% !important;
+      margin-top: 8px;
+      font-size: 13px;
+      line-height: 1.8;
+      padding-top: 8px;
+      border-top: 1px solid #f5f5f7;
+    }
+    .features::before {
+      content: "配置详情";
+      display: block;
+      font-size: 11px;
+      color: #aaa;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .footer {
+      font-size: 12px;
+      padding: 12px;
+    }
+  }
+
+  /* 超小屏幕 (<=375px) */
+  @media screen and (max-width: 375px) {
+    body { padding: 12px 8px; }
+    h1 { font-size: 18px; }
+    .section-header { padding: 12px 14px; }
+    .section-header h2 { font-size: 15px; }
+    tbody tr { padding: 10px 12px; }
+    .model { font-size: 14px; }
+    td.price { font-size: 16px; }
+    .features { font-size: 12px; line-height: 1.7; }
+    .tag { font-size: 10px; padding: 1px 5px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🎧 耳机产品价目表</h1>
+  <p class="subtitle">各型号配置与价格一览 · 运费均为 ¥5</p>
+
+  <!-- 二代 -->
+  <div class="section">
+    <div class="section-header">
+      <h2>二代（全功能）</h2>
+      <span class="shipping">运费 ¥5</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:22%">型号</th>
+          <th style="width:12%">价格</th>
+          <th style="width:13%">芯片方案</th>
+          <th>主要配置 / 特点</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="model">悦虎络达 1562U<br><span class="chip chip-yuehu">透明太空人款</span></td>
+          <td class="price">¥140</td>
+          <td>络达 1562U</td>
+          <td class="features">透明太空人款</td>
+        </tr>
+        <tr>
+          <td class="model">悦虎络达 1562E</td>
+          <td class="price">¥140</td>
+          <td>络达 1562E</td>
+          <td class="features">
+            蓝牙5.3 · 零延迟 · <span class="tag tag-otc">一拖二</span> · 钢壳纽扣电池35mAh · 贺正壳料 · 复合膜钛膜喇叭
+          </td>
+        </tr>
+        <tr>
+          <td class="model">悦虎金腔版 1562E<br><span class="chip chip-jinqiang">金腔版</span></td>
+          <td class="price">¥165</td>
+          <td>络达 1562E</td>
+          <td class="features">
+            <span class="tag tag-typec">Type-C</span> · 媲美官方级别 · 电镀原合页 · 独家定制HiFi级线材 · 续航8小时 · <span class="tag tag-otc">一拖二</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 五代 Pro2 -->
+  <div class="section">
+    <div class="section-header">
+      <h2>五代 Pro2</h2>
+      <span class="shipping">运费 ¥5</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:22%">型号</th>
+          <th style="width:12%">价格</th>
+          <th style="width:13%">芯片方案</th>
+          <th>主要配置 / 特点</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="model">悦虎 1562F</td>
+          <td class="price">¥150</td>
+          <td>络达 1562F</td>
+          <td class="features">超长续航 · 高性价比 · 稳定性高 · 高品质</td>
+        </tr>
+        <tr>
+          <td class="model">慧联 H2S</td>
+          <td class="price">¥205</td>
+          <td>慧联 247B</td>
+          <td class="features"><span class="tag tag-typec">Type-C</span> · 贺正高级壳料 · 慧联247B芯片 · <span class="tag tag-spacial">空间音频</span> · 无缝切换 · 双唛降噪 · 蜂鸣器 · 滑动调节 · 钢壳纽扣电池</td>
+        </tr>
+        <tr>
+          <td class="model">升龙悦虎 1562AE<br><span class="chip chip-shenglong">昇龙顶配</span></td>
+          <td class="price">¥230</td>
+          <td>络达 1562AE</td>
+          <td class="features">苹果/Type-C接口可选 · 两倍双麦降噪 · <span class="tag tag-spacial">空间音频</span> · <span class="tag tag-otc">一拖二</span> · 超低延迟 · 续航8-10小时 · 升级充电仓蜂鸣器六种声音提示（flycc可关）</td>
+        </tr>
+        <tr>
+          <td class="model">金腔悦虎 1562AE<br><span class="chip chip-jinqiang">金腔UF臻享版</span></td>
+          <td class="price">¥240</td>
+          <td>络达 1562AE</td>
+          <td class="features">苹果/Type-C接口可选 · 音质提升 功耗降低 稳定加强 · 贺正电镀金属原合页 · <span class="tag tag-spacial">空间音频（双六轴陀螺仪）</span> · <span class="tag tag-otc">一拖二</span> · 续航8-10小时</td>
+        </tr>
+        <tr>
+          <td class="model">光芒 3.0<br><span class="chip chip-guangmang">独家敲击亮灯</span></td>
+          <td class="price">¥260</td>
+          <td>—</td>
+          <td class="features"><span class="tag tag-typec">Type-C</span> · 原料壳原合页 · 全封胶（和水果一样）· 原耳帽不伤耳朵 · <strong>敲击亮灯</strong>（市场唯一）· 5-6小时续航</td>
+        </tr>
+        <tr>
+          <td class="model">慧联 H2S Turbo</td>
+          <td class="price">¥265</td>
+          <td>慧联 277</td>
+          <td class="features"><span class="tag tag-typec">Type-C</span> · 原壳料原合页品质 · 慧联最新277芯片 · 三音喇叭模组 · 三唛深度降噪 · 通话感知 · 钢壳纽扣电池</td>
+        </tr>
+        <tr>
+          <td class="model">升龙悦虎 1571AM<br><span class="chip chip-shenglong">昇龙</span></td>
+          <td class="price">¥265</td>
+          <td>络达 1571AM</td>
+          <td class="features"><span class="tag tag-typec">Type-C</span> · 升级AI对话感知 · 自适应通透 · 降噪音质效果拉满 · 双ST陀螺仪空间音频头部跟踪 · <span class="tag tag-otc">一拖三</span> · 10小时续航</td>
+        </tr>
+        <tr>
+          <td class="model">金腔悦虎 1571AM<br><span class="chip chip-jinqiang">金腔版</span></td>
+          <td class="price">¥265</td>
+          <td>络达 1571AM</td>
+          <td class="features"><span class="tag tag-typec">Type-C</span> · 贺正电镀金属原合页 · 真自适应降噪/通透/对话感知 · QI无线充电 · 滑动调节音量 · <span class="tag tag-otc">一拖三</span> · 10小时续航</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 新四代/七代 AirPods 4 -->
+  <div class="section">
+    <div class="section-header">
+      <h2>新四代 / 七代（AirPods 4）</h2>
+      <span class="shipping">运费 ¥5</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:22%">型号</th>
+          <th style="width:12%">价格</th>
+          <th style="width:13%">芯片方案</th>
+          <th>主要配置 / 特点</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="model">升龙悦虎 1563E</td>
+          <td class="price">¥150</td>
+          <td>络达 1563E</td>
+          <td class="features">支持安卓/鸿蒙/iOS空间音效 · 充电仓内嵌敲击IC（敲击复位）· 真压感真光感 · <span class="tag tag-otc">一拖二</span> · 续航6-7小时</td>
+        </tr>
+        <tr>
+          <td class="model">金腔悦虎 1563E</td>
+          <td class="price">¥150</td>
+          <td>络达 1563E</td>
+          <td class="features">高信噪比SNR硅麦 + <span class="tag tag-anc">ANC降噪</span> · 360°环绕式通透效果 · <span class="tag tag-otc">一拖二</span> · 续航6-7小时</td>
+        </tr>
+        <tr>
+          <td class="model">慧联 A12 Pro</td>
+          <td class="price">¥185</td>
+          <td>慧联 A12</td>
+          <td class="features">双六轴陀螺仪<span class="tag tag-spacial">空间音频</span> · 钢壳纽扣电池 · 三音HIFI喇叭模组 · 对话感知降噪通透 · 双MIC通话降噪 · 无缝切换 · 骨声纹传导硬件 · 续航4小时</td>
+        </tr>
+        <tr>
+          <td class="model">升龙悦虎 1571AM<br><span class="chip chip-shenglong">鎏金定制版</span></td>
+          <td class="price">¥265</td>
+          <td>络达 1571AM</td>
+          <td class="features">蓝牙5.4 · 双ST骨声纹陀螺仪 · 对话感知 · <span class="tag tag-spacial">空间音频/头部跟踪</span> · AI自适应通透 · <span class="tag tag-otc">一拖三</span> · 续航6-7小时</td>
+        </tr>
+        <tr>
+          <td class="model">金腔悦虎 1571AM<br><span class="chip chip-jinqiang">金腔版</span></td>
+          <td class="price">¥265</td>
+          <td>络达 1571AM</td>
+          <td class="features">全网独家攻克！自适应混合降噪 · HIFI级金腔音质 · AI自适应通透媲美原版 · 对话感知自然流畅 · 超高信噪比</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 八代 Pro3 -->
+  <div class="section">
+    <div class="section-header">
+      <h2>八代 Pro3</h2>
+      <span class="shipping">运费 ¥5</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:22%">型号</th>
+          <th style="width:12%">价格</th>
+          <th style="width:13%">芯片方案</th>
+          <th>主要配置 / 特点</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="model">悦虎升龙洛达 1563E<br><span class="chip chip-yuehu">高性价比</span></td>
+          <td class="price">¥160</td>
+          <td>络达 1563E</td>
+          <td class="features">音质/降噪/通话升级 · 超长续航 · 高性价比 · 稳定性高 · 高品质 · <span class="tag tag-otc">一拖二</span> · 贺正高级壳料 · 高低音好</td>
+        </tr>
+        <tr>
+          <td class="model">慧联 H3S</td>
+          <td class="price">¥215</td>
+          <td>慧联 H3S</td>
+          <td class="features">六轴陀螺仪<span class="tag tag-spacial">空间音频</span> · 头部跟踪 · 对话感知 · 降噪 · 音质偏均衡（高低音没那么强）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <p>⚠️ 以上价格均不含运费，各系列运费统一为 ¥5</p>
+    <p style="margin-top:6px; color:#aaa;">价格仅供参考，以实际报价为准</p>
+  </div>
+</div>
+</body>
+</html>
